@@ -1,11 +1,22 @@
-import { Button } from "@/components/ui/button";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import { lazy } from "react";
+
+const HomePage = lazy(() => import("./pages/home/"));
+const LoginPage = lazy(() => import("./pages/auth/login"));
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+  },
+  {
+    path: "/auth/login",
+    element: <LoginPage />,
+  },
+]);
 
 function App() {
-  return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      <Button>Click me</Button>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
